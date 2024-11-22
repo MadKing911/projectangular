@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <!-- Category filter section -->
+    <div class="col-2">
+      <h5>Category</h5>
+      <!-- @for loop for categories -->
+      @for(item of categoryList; track $index) {
+        <button class="btn btn-success mt-2" (click)="filterByCategory(item)">
+          {{ item }}
+        </button>
+      }
+    </div>
+
+    <!-- Product listing section -->
+    <div class="col-10">
+      <!-- Search bar for product filtering -->
+      <div class="my-3">
+        <input
+          type="text"
+          placeholder="Search for products..." 
+          [(ngModel)]="searchTerm"  
+          class="form-control"
+          (input)="filterProducts()" 
+        />
+      </div>
+
+      <!-- Display filtered products -->
+      <div class="row">
+        <!-- @for loop for products -->
+        @for(p of filteredProducts; track $index) {
+          <div class="col-3 pt-2">
+            <div class="card product-card">
+              <img [src]="p.image" class="card-img-top product-image" [alt]="p.name">
+              <span class="category-badge">{{ p.categories.join(', ') }}</span>
+
+              <div class="card-body">
+                <h5 class="card-title">{{ p.name }}</h5>
+                <p class="product-price">${{ p.salePrice }}</p>
+                <button class="btn add-to-cart-btn" [disabled]="" (click)="addToCart(p)">Add to Cart</button>
+                <button class="btn btn-info">
+                  <a [routerLink]="['/product-details', p.objectID]" class="text-white">More Info</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

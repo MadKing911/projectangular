@@ -1,0 +1,39 @@
+<div class="container">
+    <h2>Admin Dashboard</h2>
+  
+    <!-- Product Search -->
+    <div class="my-3">
+        <input
+            type="text"
+            placeholder="Search for products..."
+            [(ngModel)]="searchTerm"
+            class="form-control"
+            (input)="loadAllProducts()"
+        />
+    </div>
+  
+    <!-- Product Management -->
+    <div>
+        <h3>Product List</h3>
+        <ul>
+            @for(product of productList; track $index) {
+                <li>
+                    {{ product.name }}
+                    <button (click)="deleteProduct(product.id!)">Delete</button>
+                </li>
+            }           
+        </ul>
+    </div>
+  
+    <!-- User Basket -->
+    <div>   
+        <h3>User Basket</h3>
+        <ul>
+            @for(item of userBasket; track $index) {
+                <li>
+                    {{ item.name }} - ${{ item.salePrice }}
+                </li>
+            }
+        </ul>
+    </div>
+</div>

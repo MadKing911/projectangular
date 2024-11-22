@@ -1,0 +1,20 @@
+<div class="container mt-5">
+  <h2>Product List</h2>
+  <div class="row">
+    <!-- Loop through products -->
+    @for (product of cartItems; track $index) {
+      <div class="col-12 mb-3">
+        <div class="card d-flex flex-row align-items-center p-3">
+          <img [src]="product.image" class="img-fluid" alt="{{ product.name }}" style="width: 100px; height: 100px; object-fit: cover;">
+          <div class="ms-3 flex-grow-1">
+            <h5 class="card-title mb-1">{{ product.name }}</h5>
+            <p class="card-text mb-1">Price: ${{ product.salePrice }}</p>
+          </div>
+          <button class="btn btn-danger ms-auto" (click)="removeFromCart(product)">
+            Remove from Basket
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</div>

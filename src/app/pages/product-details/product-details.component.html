@@ -1,0 +1,17 @@
+<div>
+
+    <h1>{{ product.name }}</h1>
+    <img [src]="product.image" alt="{{ product.name }}">
+    <p><strong>Description:</strong> {{ product.shortDescription }}</p>
+    <p><strong>Price:</strong> {{ product.salePrice | currency}}   </p>
+    <p><strong>Shipping:</strong> {{ product.shipping }}</p>
+    <p><strong>Best Selling Rank:</strong> {{ product.bestSellingRank }}</p>
+    <p><strong>Sale Price Range:</strong> {{ product.salePrice_range }}</p>
+    <p><strong>Categories:</strong> {{ product.categories.join(',') || 'No categories available' }}</p>
+    <p><a >Visit Product Page</a></p>
+</div>
+
+
+
+
+
